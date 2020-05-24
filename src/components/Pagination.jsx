@@ -5,12 +5,20 @@ class Pagination extends React.Component {
         super()
     }
     render() {
-        const { pageSelected, pageSelectedPlus, pageSelectedMinus, totalPages } = this.props
+        const { pageSelected, pageIncrease, pageDecrease, totalPages } = this.props
 
         return (<div>
-                <button className="btn btn-primary text-white" onClick={pageSelectedMinus}>Prev</button>
+            <button 
+                className="btn btn-primary text-white" 
+                onClick={pageDecrease}
+                disabled={pageSelected === 1}
+            >Prev</button>
                 <span className="px-4">{pageSelected} из {totalPages}</span>
-                <button className="btn btn-primary text-white" onClick={pageSelectedPlus}>Next</button>
+            <button 
+                className="btn btn-primary text-white" 
+                onClick={pageIncrease}
+                enabled={pageSelected === totalPages}
+            >Next</button>
         </div>
         )
     }

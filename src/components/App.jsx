@@ -61,7 +61,7 @@ class App extends React.Component {
 	}
 
 	removeMovieFromWillWatch = (movie) => {
-		const updateMoviesWillWatch = this.state.moviesWillWatch.filter(function (item) {
+		const updateMoviesWillWatch = this.state.moviesWillWatch.filter(function (item) {			
 			return item.id !== movie.id
 		})
 		this.setState({
@@ -72,10 +72,11 @@ class App extends React.Component {
 	updateSortBy = (value) => {
 		this.setState({
 			sort_by: value,
+			pageSelected: 1
 		})
 	}
 
-	pageSelectedPlus = () => {
+	pageIncrease = () => {
 		if (this.state.pageSelected <= 500) {
 			this.setState({
 				pageSelected: this.state.pageSelected + 1
@@ -83,7 +84,7 @@ class App extends React.Component {
 		}
 	}
 	
-	pageSelectedMinus = () => {
+	pageDecrease = () => {
 		if (this.state.pageSelected > 1) {
 			this.setState({
 				pageSelected: this.state.pageSelected - 1
@@ -106,8 +107,8 @@ class App extends React.Component {
 					<div className="col-9 d-flex justify-content-center">
 						<Pagination 
 							pageSelected={this.state.pageSelected}
-							pageSelectedPlus={this.pageSelectedPlus}
-							pageSelectedMinus={this.pageSelectedMinus}
+							pageIncrease={this.pageIncrease}
+							pageDecrease={this.pageDecrease}
 							totalPages={this.state.totalPages}
 							
 						/>
@@ -138,8 +139,8 @@ class App extends React.Component {
 					<div className="col-9 d-flex justify-content-center">
 						<Pagination
 							pageSelected={this.state.pageSelected}
-							pageSelectedPlus={this.pageSelectedPlus}
-							pageSelectedMinus={this.pageSelectedMinus}
+							pageIncrease={this.pageIncrease}
+							pageDecrease={this.pageDecrease}
 							totalPages={this.state.totalPages}
 
 						/>
